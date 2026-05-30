@@ -1,10 +1,10 @@
-const CACHE = 'seoyeon-v2';
+const CACHE = 'seoyeon-v3';
 
 const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icon.svg'
+  '/my-chatbot/',
+  '/my-chatbot/index.html',
+  '/my-chatbot/manifest.json',
+  '/my-chatbot/icon.svg'
 ];
 
 self.addEventListener('install', event => {
@@ -16,29 +16,21 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    Promise.all([
-      caches.keys().then(keys =>
-        Promise.all(
-          keys
-            .filter(key => key !== CACHE)
-            .map(key => caches.delete(key))
-        )
-      ),
-      self.clients.claim()
-    ])
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE)
+          .map(key => caches.delete(key))
+      )
+    )
   );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-
   event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) return response;
-
-      return fetch(event.request).catch(() => {
-        return caches.match('./index.html');
-      });
-    })
+    fetch(event.request)
+      .then(response => response)
+      .catch(() => caches.match('/my-chatbot/index.html'))
   );
 });
