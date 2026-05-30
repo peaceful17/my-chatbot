@@ -354,7 +354,7 @@ function saveDiary() {
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  navigator.serviceWorker.register('/my-chatbot/sw.js').catch(() => {});
 }
 </script>
 </body>
