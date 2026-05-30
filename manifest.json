@@ -1,8 +1,8 @@
 {
   "name": "서연",
   "short_name": "서연",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/my-chatbot/",
+  "scope": "/my-chatbot/",
   "display": "standalone",
   "theme_color": "#FFB700",
   "background_color": "#ffffff"
