@@ -1,0 +1,18 @@
+{
+  "name": "서연",
+  "short_name": "서연",
+  "description": "나만의 멘탈 케어 챗봇",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFB700",
+  "theme_color": "#FFB700",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
